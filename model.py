@@ -2,7 +2,8 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from xgboost import XGBClassifier
+from sklearn.svm import SVC
+
 
 
 from sklearn.model_selection import  GridSearchCV
@@ -28,17 +29,10 @@ X_train=scaler.fit_transform(X_train)
 X_test=scaler.fit_transform(X_test)
 print(X_train)
 
-xgb = XGBClassifier(colsample_bytree= 0.7,
- learning_rate = 0.01,
- max_depth = 10,
- min_child_weight =  3,
- n_estimators = 500,
- subsample = 0.5)
+svc_classifier = SVC(kernel='rbf')
 
-
-
-xgb.fit(X_train,y_train)
-y_pred = xgb.predict(X_test)
+svc_classifier.fit(X_train,y_train)
+y_pred = svc_classifier.predict(X_test)
 
 
 confusion_matrix(y_test,y_pred)
@@ -46,5 +40,5 @@ print(accuracy_score(y_test,y_pred))
 print(classification_report(y_test,y_pred))
 
 #pickle the model
-pickle.dump(xgb  ,open("model.pkl","wb"))
+pickle.dump(svc_classifier ,open("model.pkl","wb"))
 

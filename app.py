@@ -16,35 +16,51 @@ app = Flask(__name__)
 def Home():
     return render_template("index.html")
 
-@app.route("/predict", methods=['GET','POST'])
+@app.route("/", methods=['POST','GET'])
+
 def predict():
+    
     if request.method == 'POST':
         #access the data from form
         #ph
-        ph = int(request.form["ph"])
-        Hardness = int(request.form["Hardness"])
-        Solids = int(request.form["Solids"])
-        Chloramines = int(request.form["Chloramines"])
-        Sulfate = int(request.form["Sulfate"])
-        Conductivity = int(request.form["Conductivity"])
-        Organic_carbon = int(request.form["Organic_carbon"])
-        Trihalomethanes = int(request.form["Trihalomethanes"])
-        Turbidity = int(request.form["Turbidity"])
+        Ph = float(request.form["ph"])
+        Hardness = float(request.form["Hardness"])
+        Solids = float(request.form["Solids"])
+        Chloramines = float(request.form["Chloramines"])
+        Sulfate = float(request.form["Sulfate"])
+        Conductivity = float(request.form["Conductivity"])
+        Organic_carbon = float(request.form["Organic_carbon"])
+        Trihalomethanes = float(request.form["Trihalomethanes"])
+        Turbidity = float(request.form["Turbidity"])
         # get prediction
+        
+        features = [
+
+            [Ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]]
+
+    
+    
+    
+    results =model.predict(features)
+    results = results.tolist()[0]
 
 
-        inf_features = [
-            [ph, Hardness, Solids, Chloramines, Sulfate, Conductivity, Organic_carbon, Trihalomethanes, Turbidity]]
-        results = model.predict(inf_features)
-        results = results.tolist()[0]
-
-        resp = {"Predicted quality": predictions_classes[results]}
 
 
-        return resp
+    
+
+    
+    pred = {"Predicted quality": predictions_classes[results]}
+
+
+
+    return pred
+
+
 
 
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
