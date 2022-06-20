@@ -2,8 +2,9 @@
 Predicting Water Quality  
 
 HERE DOWN YOU CAN CHECK THE APP WHICH IS DEPLOYED ON HEROKU CLOUD PLATFORM
+https://waterpotabilityprediction.herokuapp.com/
 
-        https://waterpotabilityprediction.herokuapp.com/
+
 
 
 
