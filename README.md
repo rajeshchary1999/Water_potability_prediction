@@ -1,5 +1,12 @@
 # Water_potability_prediction
 Predicting Water Quality  
+
+HERE DOWN YOU CAN CHECK THE APP WHICH IS DEPLOYED ON HEROKU CLOUD PLATFORM
+
+        https://waterpotabilityprediction.herokuapp.com/
+
+
+
                                                                             OVER VIEW 
                                                                             
 Access to safe drinking-water is essential to health, a basic human right and a component of effective policy for health protection. This is important as a health
